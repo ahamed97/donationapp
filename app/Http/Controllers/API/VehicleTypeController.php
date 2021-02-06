@@ -15,6 +15,6 @@ class VehicleTypeController extends Controller
 
         $vehicleTypes = VehicleType::all();
 
-        return response()->json(['payload' => $vehicleTypes,'message' => 'Vehicle type get'], 200);
+        return response()->json(['vehicleTypes' => $vehicleTypes,'message' => 'Vehicle type get'], 200);
     }
 }

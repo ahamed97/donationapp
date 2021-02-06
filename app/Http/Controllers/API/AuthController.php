@@ -23,7 +23,7 @@ class AuthController extends Controller
         ]);
 
         if(User::where('email',$request->email)->exists()){
-            return response()->json(['payload' => [], 'message' => 'Email already exixts'], 401);
+            return response()->json(['register' => [], 'message' => 'Email already exixts'], 200);
         }
         $user = User::create([
             'name' => $request->name,
@@ -45,7 +45,7 @@ class AuthController extends Controller
         $user = User::find($user->id);
         $user['token'] = $token->token;
 
-        return response()->json(['payload' => [$user],'message'=>'Registered'], 200);
+        return response()->json(['register' => [$user],'message'=>'Registered'], 200);
     }
 
     /**
@@ -62,9 +62,9 @@ class AuthController extends Controller
             $token = auth()->user()->createToken('LaravelAuthApp')->accessToken;
             $user = User::find(auth()->user()->id);
             $user['token'] = $token->token;
-            return response()->json(['payload' => [$user], 'message' => 'Login'], 200);
+            return response()->json(['login' => [$user], 'message' => 'Login'], 200);
         } else {
-            return response()->json(['payload' => [], 'message' => 'Unauthorised'], 401);
+            return response()->json(['login' => [], 'message' => 'Unauthorised'], 200);
         }
     }
 
@@ -88,7 +88,7 @@ class AuthController extends Controller
         $user->district_id = $request->district_id;
         $user->save();
 
-        return response()->json(['payload' => [$user],'message' => 'Updated'], 200);
+        return response()->json(['profileUpdate' => [$user],'message' => 'Updated'], 200);
     }
 
 	public function checkRequest(Request $request)
@@ -106,7 +106,7 @@ class AuthController extends Controller
 	 */
 	protected function sendResetLinkResponse(Request $request, $response)
 	{
-		return response()->json(['payload' => [], 'message' => 'A password reset email will be sent to you in a moment.'],200);
+		return response()->json(['passwordResetEmail' => [], 'message' => 'A password reset email will be sent to you in a moment.'],200);
 	}
 
 	/**
@@ -118,7 +118,7 @@ class AuthController extends Controller
 	 */
 	protected function sendResetLinkFailedResponse(Request $request, $response)
 	{
-        return response()->json(['payload' => [], 'message' => 'Failed to send password reset email. Ensure your email is correct and try again.'],422);
+        return response()->json(['passwordResetEmail' => [], 'message' => 'Failed to send password reset email. Ensure your email is correct and try again.'],200);
     }
 
     /**
@@ -132,7 +132,7 @@ class AuthController extends Controller
 
         $user = User::find($request->id);
 
-        return response()->json(['payload' => [$user],'message' => 'User Profile'], 200);
+        return response()->json(['profile' => [$user],'message' => 'User Profile'], 200);
     }
 
     /**
@@ -144,6 +144,6 @@ class AuthController extends Controller
             'id' => 'required',
         ]);
 
-        return response()->json(['payload' => [],'message' => 'Logout'], 200);
+        return response()->json(['logout' => [],'message' => 'Logout'], 200);
     }
 }

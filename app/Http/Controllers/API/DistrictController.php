@@ -16,6 +16,6 @@ class DistrictController extends Controller
 
         $districts = District::all();
 
-        return response()->json(['payload' => $districts,'message' => 'Districts get'], 200);
+        return response()->json(['districtTypes' => $districts,'message' => 'Districts get'], 200);
     }
 }
