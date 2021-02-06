@@ -36,7 +36,8 @@ class User extends Authenticatable
         'longitude',
         'vehicle_type_id',
         'district_id',
-        'type'
+        'type',
+        'vehicle_no'
     ];
 
     /**
