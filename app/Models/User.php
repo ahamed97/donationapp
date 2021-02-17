@@ -37,7 +37,8 @@ class User extends Authenticatable
         'vehicle_type_id',
         'district_id',
         'type',
-        'vehicle_no'
+        'vehicle_no',
+        'rate'
     ];
 
     /**

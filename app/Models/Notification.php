@@ -11,5 +11,5 @@ class Notification extends Model
 
     protected $fillable = ['id','title','description','user_id','donation_id','is_read'];
 
-    protected $visible = ['id','title','description','user_id','trip_id','is_read','created_at'];
+    protected $visible = ['id','title','description','user_id','trip_id','is_read','create_at'];
 }

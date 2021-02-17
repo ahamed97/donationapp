@@ -15,11 +15,12 @@ class CreateNotificationsTable extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title')->nullable();;
-            $table->text('description')->nullable();;
-            $table->integer('donation_id')->nullable();;
-            $table->integer('user_id')->nullable();;
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+            $table->integer('donation_id')->nullable();
+            $table->integer('user_id')->nullable();
             $table->boolean('is_read')->nullable()->default(false);
+            $table->dateTime('create_at')->now();
             $table->timestamps();
         });
     }
