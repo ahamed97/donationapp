@@ -28,7 +28,7 @@
                                         Name
                                     </th>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 bg-white divide-y divide-gray-200">
-                                        {{ $user->name }}
+                                        {{ $user->name }} {{$user->last_name}}
                                     </td>
                                 </tr>
                                 <tr class="border-b">
@@ -41,10 +41,16 @@
                                 </tr>
                                 <tr class="border-b">
                                     <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Email Verified At
+                                        Type
                                     </th>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 bg-white divide-y divide-gray-200">
-                                        {{ $user->email_verified_at }}
+                                        @if($user->type == 1)
+                                            Rider
+                                            @elseif($user->type == 2)
+                                            Donator
+                                            @else
+                                                -
+                                            @endif
                                     </td>
                                 </tr>
                                 <tr class="border-b">
