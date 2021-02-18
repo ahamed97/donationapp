@@ -16,14 +16,13 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
                 </div>
-                @can('task_access')
+
+                @can('user_access')
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="{{ route('tasks.index') }}" :active="request()->routeIs('tasks.*')">
-                            Tasks
+                        <x-jet-nav-link href="{{ route('notifications.index') }}" :active="request()->routeIs('notifications.*')">
+                            Notifications
                         </x-jet-nav-link>
                     </div>
-                @endcan
-                @can('user_access')
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.*')">
                             Users

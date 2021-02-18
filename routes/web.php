@@ -22,7 +22,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('tasks', \App\Http\Controllers\TasksController::class);
+    Route::resource('notifications', \App\Http\Controllers\NotificationController::class);
+    Route::get('user-notification', [App\Http\Controllers\NotificationController::class, 'userNotification']);
+    Route::post('user-notification', [App\Http\Controllers\NotificationController::class, 'userNotificationStore']);
 
     Route::resource('users', \App\Http\Controllers\UsersController::class);
 });
