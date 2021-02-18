@@ -136,7 +136,9 @@ class NotificationController extends Controller
         $notification = new Notification();
         $notification->title = $request->title;
         $notification->description = $request->description;
-        $notification->user_id = $request->id;
+        $notification->user_id = $request->user;
         $notification->save();
+
+        return redirect()->route('notifications.index');
     }
 }

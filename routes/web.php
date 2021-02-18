@@ -24,7 +24,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('notifications', \App\Http\Controllers\NotificationController::class);
     Route::get('user-notification', [App\Http\Controllers\NotificationController::class, 'userNotification']);
-    Route::post('user-notification', [App\Http\Controllers\NotificationController::class, 'userNotificationStore']);
+    Route::post('user-notification/store', [App\Http\Controllers\NotificationController::class, 'userNotificationStore']);
 
     Route::resource('users', \App\Http\Controllers\UsersController::class);
 });
