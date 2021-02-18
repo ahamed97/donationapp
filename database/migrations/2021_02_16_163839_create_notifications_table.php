@@ -20,7 +20,6 @@ class CreateNotificationsTable extends Migration
             $table->integer('donation_id')->nullable();
             $table->integer('user_id')->nullable();
             $table->boolean('is_read')->nullable()->default(false);
-            $table->dateTime('create_at')->now();
             $table->timestamps();
         });
     }

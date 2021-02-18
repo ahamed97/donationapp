@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\VehicleType;
+use App\Models\Weight;
 use Illuminate\Database\Seeder;
 
-class VehicleTypesTableSeeder extends Seeder
+class WeightsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,26 +17,22 @@ class VehicleTypesTableSeeder extends Seeder
         $data = [
             [
                 'id'             => 1,
-                'name'           => 'Bike',
+                'range'           => '1-10 Kg',
             ],
             [
                 'id'             => 2,
-                'name'           => 'Car',
+                'range'           => '11-50 Kg',
             ],
             [
                 'id'             => 3,
-                'name'           => '3 wheeler',
+                'range'           => '51-100 Kg',
             ],
             [
                 'id'             => 4,
-                'name'           => 'Van',
-            ],
-            [
-                'id'             => 5,
-                'name'           => 'Truck',
+                'range'           => '101-200 Kg',
             ]
         ];
 
-        VehicleType::insert($data);
+        Weight::insert($data);
     }
 }

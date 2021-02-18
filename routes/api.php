@@ -2,6 +2,12 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\DistrictController;
+use App\Http\Controllers\API\DonationController;
+use App\Http\Controllers\API\VehicleTypeController;
+use App\Http\Controllers\API\DonationTypeController;
+use App\Http\Controllers\API\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,4 +44,5 @@ Route::get('donation', [App\Http\Controllers\API\DonationController::class, 'sho
 Route::post('donation', [App\Http\Controllers\API\DonationController::class, 'store']);
 Route::delete('donation', [App\Http\Controllers\API\DonationController::class, 'destroy']);
 Route::post('donation/pickdrop', [App\Http\Controllers\API\DonationController::class, 'update']);
+Route::get('weights', [App\Http\Controllers\API\WeightController::class, 'index']);
 //});

@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Weight;
 use App\Models\District;
+use App\Models\VehicleType;
 use App\Models\DonationType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -30,12 +32,17 @@ class Donation extends Model
         'image_url_1',
         'image_url_2',
         'donater_id',
-        'driver_id'
+        'driver_id',
+        'vehicle_type_id',
+        'weight_id'
+
     ];
 
     protected $appends = [
         'donation_type',
         'district',
+        'weight',
+        'vehicle_type'
     ];
 
     public function district()
@@ -48,6 +55,16 @@ class Donation extends Model
         return $this->belongsTo(DonationType::class);
     }
 
+    public function vehicleType()
+    {
+        return $this->belongsTo(VehicleType::class);
+    }
+
+    public function weight()
+    {
+        return $this->belongsTo(Weight::class);
+    }
+
     public function getDistrictAttribute()
     {
         return ($this->district()->first())?($this->district()->first()->name):(null);
@@ -56,5 +73,15 @@ class Donation extends Model
     public function getDonationTypeAttribute()
     {
         return ($this->donationType()->first())?($this->donationType()->first()->name):(null);
+    }
+
+    public function getVehicleTypeAttribute()
+    {
+        return ($this->vehicleType()->first())?($this->vehicleType()->first()->name):(null);
+    }
+
+    public function getweightAttribute()
+    {
+        return ($this->weight()->first())?($this->weight()->first()->range):(null);
     }
 }

@@ -24,6 +24,12 @@ class DonationController extends Controller
         if($request->driver_id){
             $donations = $donations->where('driver_id',$request->driver_id);
         }
+        if($request->weight_id){
+            $donations = $donations->where('weight_id',$request->weight_id);
+        }
+        if($request->vehicle_type_id){
+            $donations = $donations->where('vehicle_type_id',$request->vehicle_type_id);
+        }
 
         $circleRadius = 6371;
         $radius = 20;
@@ -74,6 +80,8 @@ class DonationController extends Controller
             'nic' => $request->nic,
             'image_url_1' => $path_1,
             'donater_id' => $request->donater_id,
+            'weight_id' => $request->weight_id,
+            'vehicle_type_id' => $request->vehicle_type_id,
         ]);
 
         $donator = User::where('id',$request->donater_id)->first();

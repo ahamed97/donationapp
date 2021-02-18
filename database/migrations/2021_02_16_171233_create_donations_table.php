@@ -29,6 +29,8 @@ class CreateDonationsTable extends Migration
             $table->string('image_url_2')->nullable();
             $table->integer('donater_id')->nullable();
             $table->integer('driver_id')->nullable();
+            $table->integer('weight_id')->nullable();
+            $table->integer('vehicle_type_id')->nullable();
             $table->timestamps();
         });
     }
