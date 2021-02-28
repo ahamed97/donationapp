@@ -42,7 +42,11 @@ class Donation extends Model
         'donation_type',
         'district',
         'weight',
-        'vehicle_type'
+        'vehicle_type',
+        'donator_first_name',
+        'donator_last_name',
+        'driver_first_name',
+        'driver_last_name',
     ];
 
     public function district()
@@ -65,6 +69,16 @@ class Donation extends Model
         return $this->belongsTo(Weight::class);
     }
 
+    public function driver()
+    {
+        return $this->belongsTo(User::class,'driver_id');
+    }
+
+    public function donator()
+    {
+        return $this->belongsTo(User::class,'donater_id');
+    }
+
     public function getDistrictAttribute()
     {
         return ($this->district()->first())?($this->district()->first()->name):(null);
@@ -83,5 +97,25 @@ class Donation extends Model
     public function getweightAttribute()
     {
         return ($this->weight()->first())?($this->weight()->first()->range):(null);
+    }
+
+    public function getDonatorFirstNameAttribute()
+    {
+        return ($this->donator()->first())?($this->donator()->first()->name):(null);
+    }
+
+    public function getDonatorLastNameAttribute()
+    {
+        return ($this->donator()->first())?($this->donator()->first()->last_name):(null);
+    }
+
+    public function getDriverFirstNameAttribute()
+    {
+        return ($this->driver()->first())?($this->driver()->first()->name):(null);
+    }
+
+    public function getDriverLastNameAttribute()
+    {
+        return ($this->driver()->first())?($this->driver()->first()->last_name):(null);
     }
 }
