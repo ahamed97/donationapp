@@ -30,6 +30,9 @@ class DonationController extends Controller
         if($request->vehicle_type_id){
             $donations = $donations->where('vehicle_type_id',$request->vehicle_type_id);
         }
+        if($request->donation_type_id){
+            $donations = $donations->where('donation_type_id',$request->donation_type_id);
+        }
 
         $circleRadius = 6371;
         $radius = 20;
